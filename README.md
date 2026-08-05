@@ -1,7 +1,7 @@
 # GOLDEN
 > **GOLDEN**: **G**ene expressi**O**n and a**L**lele-informed **DE**composition for ge**N**etic heterogeneity
 
-**GOLDEN** is a deeplearning framework developed to decipher inter-individual heterogeneity in spatial transcriptomics (ST).
+**GOLDEN** is a deep learning framework developed to decipher inter-individual heterogeneity in spatial transcriptomics (ST).
 
 ---
 
