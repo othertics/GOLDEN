@@ -1,0 +1,48 @@
+# =============================================================================
+# Conda environment for the synthetic ST simulation pipeline.
+#
+# Create and activate:
+#     conda env create -f environment.yml
+#     conda activate golden-simulation
+#
+# Every package listed here is imported directly by the pipeline scripts;
+# nothing is included for downstream modelling or analysis.
+#
+# Version pins allow patch updates but hold the minor version, because the
+# pipeline relies on pandas/seaborn behaviour that has changed across minor
+# releases. For an exact record of the environment a given set of results was
+# produced in, export a lock file from the active environment:
+#
+#     conda env export > environment.lock.yml
+#
+# External tool, not installable here:
+#     VarTrix (https://github.com/10XGenomics/vartrix) is a standalone binary
+#     run before this pipeline. vartrix/make_alt_sum.py reads its output.
+# =============================================================================
+
+name: golden-simulation
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10
+
+  # Single-cell containers and Cell Ranger I/O
+  # scanpy      step1 (QC metrics, downsampling), split_sc, step6
+  # anndata     split_sc, step6
+  # h5py        step3 (reads gene symbols from filtered_feature_bc_matrix.h5)
+  - scanpy=1.10.*
+  - anndata=0.10.*
+  - h5py=3.*
+
+  # Numerics and tabular data, used by every script
+  # scipy       sparse matrices and Matrix Market I/O in step3, step6, make_alt_sum
+  - numpy=1.26.*
+  - pandas=2.2.*
+  - scipy=1.13.*
+
+  # Figures, used by step6 and step7 only
+  # matplotlib-base omits the GUI toolkits, so plots render headless via Agg
+  - matplotlib-base=3.8.*
+  - seaborn=0.13.*
