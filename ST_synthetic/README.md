@@ -267,9 +267,3 @@ particular slide.
 
 Consequently, re-running this code will not regenerate the exact datasets used in
 the accompanying manuscript.
-
----
-
-## Citation
-
-Simulation core adapted from `ST_simulation` (Andersson et al.).
